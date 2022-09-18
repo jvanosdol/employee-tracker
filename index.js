@@ -39,7 +39,7 @@ const db = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: 'Greenymeeny911',
+        password: 'password123',
         database: 'sample_blog_db'
     },
 );
@@ -58,22 +58,12 @@ const createPost = async () => {
 
     const answers = await inquirer.prompt([
         {
-            message: 'What is the title of the post?',
-            name: 'title',
-            type: 'input'
-        },
-        {
-            message: 'What is the content of the post?',
-            name: 'content',
-            type: 'input'
-        },
-        {
-            message: 'Who is the author of the post?',
-            name: 'author_id',
+            message: 'What would you like to do?',
+            name: 'main_action',
             type: 'list',
-            choices: userChoices
-        }
-        
+            choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add and Employee', 'Update an Employee Role']
+        },
+
     ]);
 
     await db.query(
@@ -82,5 +72,45 @@ const createPost = async () => {
         )
     console.log(answers)
 }
+
+
+
+// const createPost = async () => {
+//     const users = await db.query('SELECT * FROM USERS')
+
+//     const userChoices = users.map( user => ({
+//         name: user.username,
+//         value: user.id
+//     }))
+
+//     console.log(userChoices)
+
+//     const answers = await inquirer.prompt([
+//         {
+//             message: 'What would you like to do?',
+//             name: 'main_action',
+//             type: 'list',
+//             choices: ['View Departments', 'Add Employee', 'Add Department']
+//         },
+//         {
+//             message: 'What is the content of the post?',
+//             name: 'content',
+//             type: 'input'
+//         },
+//         {
+//             message: 'Who is the author of the post?',
+//             name: 'author_id',
+//             type: 'list',
+//             choices: userChoices
+//         }
+        
+//     ]);
+
+//     await db.query(
+//         'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
+//         [answers.title, answers.content, answers.author_id]
+//         )
+//     console.log(answers)
+// }
 
 createPost();
