@@ -47,11 +47,11 @@ const db = mysql.createConnection(
 db.query = utils.promisify(db.query);
 
 const createPost = async () => {
-    const users = await db.query('SELECT * FROM USERS')
+    const departments = await db.query('SELECT * FROM departments')
 
-    const userChoices = users.map( user => ({
-        name: user.username,
-        value: user.id
+    const userChoices = departments.map( department => ({
+        id: department.dept_id,
+        name: department.dept_name
     }))
 
     console.log(userChoices)
@@ -67,10 +67,10 @@ const createPost = async () => {
 
     ]);
 
-    await db.query(
-        'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
-        [answers.title, answers.content, answers.author_id]
-        )
+    // await db.query(
+    //     'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
+    //     [answers.title, answers.content, answers.author_id]
+    //     )
     console.log(answers)
 }
 

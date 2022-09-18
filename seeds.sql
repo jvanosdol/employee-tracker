@@ -1,5 +1,7 @@
-USE sample_blog_db;
+USE employee_db;
 
-INSERT INTO users (username)
+INSERT INTO departments (dept_name)
     VALUES
-        ('that guy');
+        ('dept_1'),
+        ('dept_2'),
+        ('dept_3');
