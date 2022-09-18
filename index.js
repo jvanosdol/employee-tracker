@@ -40,7 +40,7 @@ const db = mysql.createConnection(
         host: 'localhost',
         user: 'root',
         password: 'password123',
-        database: 'sample_blog_db'
+        database: 'employee_db'
     },
 );
 
@@ -57,6 +57,7 @@ const createPost = async () => {
     console.log(userChoices)
 
     const answers = await inquirer.prompt([
+
         {
             message: 'What would you like to do?',
             name: 'main_action',
