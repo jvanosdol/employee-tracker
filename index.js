@@ -54,18 +54,18 @@ const createPost = async () => {
         name: department.dept_name
     }))
 
-    console.log(userChoices)
+    // console.log(userChoices)
 
-    const answers = await inquirer.prompt([
+    // const answers = await inquirer.prompt([
 
-        {
-            message: 'What would you like to do?',
-            name: 'main_action',
-            type: 'list',
-            choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add and Employee', 'Update an Employee Role']
-        },
+    //     {
+    //         message: 'What would you like to do?',
+    //         name: 'main_action',
+    //         type: 'list',
+    //         choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add and Employee', 'Update an Employee Role']
+    //     },
 
-    ]);
+    // ]);
 
     // await db.query(
     //     'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
@@ -74,6 +74,42 @@ const createPost = async () => {
     console.log(answers)
 }
 
+viewDepartments = async () => {
+    const departments = await db.query('SELECT * FROM departments')
+
+    const departmentView = departments.map( department => ({
+        id: department.dept_id,
+        name: department.dept_name
+    }))
+
+    console.log(departmentView)
+};
+/////
+viewRoles = async () => {
+    const roles = await db.query('SELECT * FROM roles')
+
+    const roleView = roles.map( role => ({
+        id: role.role_id,
+        title: role.role_title,
+        salary: role.role_salary
+    }))
+
+    console.log(roleView)
+};
+///////
+
+viewEmployees = async () => {
+    const employees = await db.query('SELECT * FROM employee')
+
+    const employeeView = employees.map( employee => ({
+        id: employee.emp_id,
+        first_name: employee.emp_first_name,
+        last_name: employee.emp_last_name,
+        role_id: employee.emp_role_id
+    }))
+
+    console.log(employeeView)
+};
 
 
 // const createPost = async () => {
@@ -114,4 +150,7 @@ const createPost = async () => {
 //     console.log(answers)
 // }
 
-createPost();
+//createPost();
+viewDepartments();
+viewEmployees();
+viewRoles();

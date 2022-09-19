@@ -27,3 +27,18 @@ CREATE TABLE employee (
     emp_last_name VARCHAR(30) NOT NULL,
     emp_role_id INT NOT NULL
 );
+
+SELECT 
+employee.emp_id,
+dept_name,
+emp_role_id,
+role_title,
+role_salary,
+emp_first_name,
+emp_last_name
+FROM departments
+LEFT JOIN roles 
+ON departments.dept_id = roles.foreign_department_id
+
+LEFT JOIN employee 
+ON roles.role_id = employee.emp_role_id;

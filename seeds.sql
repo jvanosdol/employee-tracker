@@ -1,5 +1,5 @@
 USE employee_db;
--- Seeding Data
+
 INSERT INTO departments (dept_name)
     VALUES
         ('Management'),
@@ -30,4 +30,5 @@ INSERT INTO employee (emp_first_name, emp_last_name, emp_role_id)
         ('Devin', 'Flora', 4),
         ('Tobias', 'Funke', 1),
         ('Dane', 'Murphy', 2);
+
         
