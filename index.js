@@ -173,17 +173,18 @@ addDepartment = async () => {
             name: 'dept_name',
             type: 'input',
         },
+
     ])
 
 
     console.log(answers)
 
 
-    let query =  `INSERT INTO departments (dept_name) VALUES ?`;
-
+    let sql =  (`INSERT INTO departments (dept_name) VALUES (?)`, answers.dept_name);
+    console.log(sql)
     //let values = answers.name;
 
-    db.query(query, answers.name, (err, rows) => {
+     db.query(sql, (err, rows) => {
         if (err) throw err;
         console.log('Department added!')
     })
