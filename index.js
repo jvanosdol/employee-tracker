@@ -31,9 +31,13 @@
 
                 // THen ask the user what they want to do next
 
+// ****************************************************************************************************
 const mysql = require('mysql2');
 const utils = require('util');
 const inquirer = require('inquirer');
+const { allowedNodeEnvironmentFlags } = require('process');
+
+// ****************************************************************************************************
 
 const db = mysql.createConnection(
     {
@@ -46,34 +50,78 @@ const db = mysql.createConnection(
 
 db.query = utils.promisify(db.query);
 
+// ****************************************************************************************************
+
 const createPost = async () => {
     const departments = await db.query('SELECT * FROM departments')
 
-    const userChoices = departments.map( department => ({
-        id: department.dept_id,
-        name: department.dept_name
-    }))
+//     const userChoices = departments.map( department => ({
+//         id: department.dept_id,
+//         name: department.dept_name
+//     }))
 
-    // console.log(userChoices)
 
-    // const answers = await inquirer.prompt([
+// console.log(userChoices)
 
-    //     {
-    //         message: 'What would you like to do?',
-    //         name: 'main_action',
-    //         type: 'list',
-    //         choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add and Employee', 'Update an Employee Role']
-    //     },
+const answers = await inquirer.prompt([
 
-    // ]);
+    {
+        message: 'What would you like to do?',
+        name: 'main_action',
+        type: 'list',
+        choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add an Employee', 'Update an Employee Role']
+    },
 
-    // await db.query(
-    //     'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
-    //     [answers.title, answers.content, answers.author_id]
-    //     )
-    console.log(answers)
+])
+    switch (answers.main_action) {
+        case 'View All Departments':
+            viewDepartments();
+            break;
+
+        case 'View All Roles':
+            viewRoles();
+            break;
+        
+        case 'View All Employees':
+            viewEmployees();
+            break;
+
+        case 'Add a Department':
+            addDepartment();
+            break;
+
+        case 'Add a Role':
+            addRole();
+            break;
+
+        case 'Add an Employee':
+            addEmployee();
+            break;
+        
+        case 'Update an Employee Role':
+            updateEmployeeRole();
+            break;
+    }
 }
 
+
+
+
+
+// await db.query(
+//     'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
+//     [answers.title, answers.content, answers.author_id]
+//     )
+
+//     console.log(answers)
+
+// }
+
+
+
+
+
+// DONE ****************************************************************************************************
 viewDepartments = async () => {
     const departments = await db.query('SELECT * FROM departments')
 
@@ -82,9 +130,10 @@ viewDepartments = async () => {
         name: department.dept_name
     }))
 
-    console.log(departmentView)
+    console.table(departments)
+    //console.log(departmentView)
 };
-/////
+// DONE ****************************************************************************************************
 viewRoles = async () => {
     const roles = await db.query('SELECT * FROM roles')
 
@@ -94,10 +143,11 @@ viewRoles = async () => {
         salary: role.role_salary
     }))
 
-    console.log(roleView)
-};
-///////
+    console.table(roles)
 
+    //console.log(roleView)
+};
+// DONE ****************************************************************************************************
 viewEmployees = async () => {
     const employees = await db.query('SELECT * FROM employee')
 
@@ -108,8 +158,93 @@ viewEmployees = async () => {
         role_id: employee.emp_role_id
     }))
 
-    console.log(employeeView)
+    console.table(employees)
+    //console.log(employeeView)
 };
+
+
+// TODO ****************************************************************************************************
+addDepartment = async () => {
+
+    const answers = await inquirer.prompt([
+
+        {
+            message: 'What is the name of the department you want to add?',
+            name: 'dept_name',
+            type: 'input',
+        },
+    ])
+
+
+    console.log(answers)
+
+
+    let query =  `INSERT INTO departments (dept_name) VALUES ?`;
+
+    //let values = answers.name;
+
+    db.query(query, answers.name, (err, rows) => {
+        if (err) throw err;
+        console.log('Department added!')
+    })
+
+
+    
+    
+    // const departmentView = departments.map( department => ({
+    //     id: department.dept_id,
+    //     name: department.dept_name
+    // }))
+
+    // console.table(departments)
+    //console.log(departmentView)
+};
+
+// TODO ****************************************************************************************************
+addRole = async () => {
+
+};
+
+// TODO ****************************************************************************************************
+addEmployee = async () => {
+
+    const answers = await inquirer.prompt([
+
+        {
+            message: 'What is the employee\'s first name?',
+            name: 'first_name',
+            type: 'input',
+        },
+        {
+            message: 'What is the employee\'s last name?',
+            name: 'last_name',
+            type: 'input',
+        },
+        {
+            message: 'What is the employee\'s role?',
+            name: 'role',
+            type: 'input',
+        },
+    
+    ])
+
+
+    console.log(answers)
+
+    // const departments = await db.query('SELECT * FROM departments')
+
+};
+
+updateEmployeeRole = async () => {
+
+};
+
+
+
+
+
+
+
 
 
 // const createPost = async () => {
@@ -150,7 +285,7 @@ viewEmployees = async () => {
 //     console.log(answers)
 // }
 
-//createPost();
-viewDepartments();
-viewEmployees();
-viewRoles();
+createPost();
+// viewDepartments();
+// viewEmployees();
+// viewRoles();
