@@ -102,7 +102,7 @@ const answers = await inquirer.prompt([
             updateEmployeeRole();
             break;
     }
-}
+};
 
 
 
@@ -167,31 +167,25 @@ viewEmployees = async () => {
 addDepartment = async () => {
 
     const answers = await inquirer.prompt([
-
         {
             message: 'What is the name of the department you want to add?',
             name: 'dept_name',
-            type: 'input',
+            type: 'input'
         },
-
     ])
-
-
     console.log(answers)
 
+    let sqlQuery =  `INSERT INTO departments (dept_name) VALUES (?);`;
 
-    let sql =  (`INSERT INTO departments (dept_name) VALUES (?)`, answers.dept_name);
-    console.log(sql)
+    console.log(sqlQuery)
+
     //let values = answers.name;
 
-     db.query(sql, (err, rows) => {
+     db.query(sqlQuery, [answers.dept_name], (err, rows) => {
         if (err) throw err;
         console.log('Department added!')
     })
 
-
-    
-    
     // const departmentView = departments.map( department => ({
     //     id: department.dept_id,
     //     name: department.dept_name
@@ -199,11 +193,40 @@ addDepartment = async () => {
 
     // console.table(departments)
     //console.log(departmentView)
+
 };
 
 // TODO ****************************************************************************************************
 addRole = async () => {
+    const answers = await inquirer.prompt([
+        {
+            message: 'What is the name of the role you want to add?',
+            name: 'role_title',
+            type: 'input'
+        },
+        {
+            message: 'What is the role\'s salary?',
+            name: 'role_salary',
+            type: 'input'
+        },
+        {
+            message: 'What is role\'s department id?',
+            name: 'foreign_department_id',
+            type: 'input'
+        },
+    ])
+    console.log(answers)
 
+    let sqlQuery =  `INSERT INTO roles (role_title, role_salary, foreign_department_id) VALUES (?, ?, ?);`;
+
+    console.log(sqlQuery)
+
+    //let values = answers.name;
+
+     db.query(sqlQuery, [answers.role_title, answers.role_salary, answers.foreign_department_id], (err, rows) => {
+        if (err) throw err;
+        console.log('Department added!')
+    })
 };
 
 // TODO ****************************************************************************************************
