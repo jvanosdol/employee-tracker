@@ -25,7 +25,9 @@ CREATE TABLE employee (
     emp_id INT NOT NULL AUTO_INCREMENT,
     emp_first_name VARCHAR(30) NOT NULL,
     emp_last_name VARCHAR(30) NOT NULL,
-    emp_role_id INT NOT NULL
+    emp_role_id INT NOT NULL,
+    emp_manager_id INT NOT NULL,
+    FOREIGN KEY (emp_manager_id) REFERENCES employee(emp_id)
 );
 
 -- SELECT 

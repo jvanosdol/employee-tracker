@@ -19,16 +19,16 @@ INSERT INTO roles (role_title, role_salary, foreign_department_id)
         ('Marketing Lead', 80000, 4),
         ('IP Lawyer', 130000, 5);
 
-INSERT INTO employee (emp_first_name, emp_last_name, emp_role_id)
+INSERT INTO employee (emp_first_name, emp_last_name, emp_role_id, emp_manager_id)
     VALUES
-        ('Gloria', 'Esmee', 4),
-        ('Jared', 'Benjamin', 3),
-        ('Nathaniel', 'Mona', 5),
-        ('Parker', 'Lyda', 3),
-        ('Lavina', 'Shelly', 3),
-        ('Simone', 'Damon', 2),
-        ('Devin', 'Flora', 4),
-        ('Tobias', 'Funke', 1),
-        ('Dane', 'Murphy', 2);
+        ('Gloria', 'Esmee', 4, 1),
+        ('Jared', 'Benjamin', 3, 2),
+        ('Nathaniel', 'Mona', 5, 1),
+        ('Parker', 'Lyda', 3, 2),
+        ('Lavina', 'Shelly', 3, 2),
+        ('Simone', 'Damon', 2, 1),
+        ('Devin', 'Flora', 4, 1),
+        ('Tobias', 'Funke', 1, 1),
+        ('Dane', 'Murphy', 2, 1);
 
         

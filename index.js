@@ -155,7 +155,8 @@ viewEmployees = async () => {
         id: employee.emp_id,
         first_name: employee.emp_first_name,
         last_name: employee.emp_last_name,
-        role_id: employee.emp_role_id
+        role_id: employee.emp_role_id,
+        manager_id: employee.emp_manager_id
     }))
 
     console.table(employees)
@@ -246,7 +247,12 @@ addEmployee = async () => {
         },
         {
             message: 'What is the employee\'s role?',
-            name: 'role',
+            name: 'emp_role_id',
+            type: 'input',
+        },
+        {
+            message: 'What is the employee\'s manager\'s id?',
+            name: 'emp_manager_id',
             type: 'input',
         },
     
@@ -254,6 +260,19 @@ addEmployee = async () => {
 
 
     console.log(answers)
+
+    console.log(answers)
+
+    let sqlQuery =  `INSERT INTO employee (emp_first_name, emp_last_name, emp_role_id, emp_manager_id) VALUES (?, ?, ?, ?);`;
+
+    console.log(sqlQuery)
+
+    //let values = answers.name;
+
+     db.query(sqlQuery, [answers.first_name, answers.last_name, answers.emp_role_id, answers.emp_manager_id], (err, rows) => {
+        if (err) throw err;
+        console.log('Department added!')
+    })
 
     // const departments = await db.query('SELECT * FROM departments')
 
