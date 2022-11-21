@@ -1,37 +1,86 @@
-# sql-employee-tracker
+## <Employee-Tracker>
 
-Design the database schema as shown in the following image:
+## Author
 
-![Database schema includes tables labeled “employee,” role,” and “department.”](./Assets/12-sql-homework-demo-01.png)
+James Van Osdol
 
-As the image illustrates, your schema should contain the following three tables:
+## Description
 
-* `department`
+This project demonstrates a basic understanding on SQL. This project focuses on seeding data into a schema, readin data, updating data, and creating new rows of data within the intial tables. 
 
-    * `id`: `INT PRIMARY KEY`
+The user may view the current table of departments, the current table of roles, and the current table of employees. The user may also add onto any of the tables. 
 
-    * `name`: `VARCHAR(30)` to hold department name
+## Table of Contents
 
-* `role`
+- [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Credits](#credits)
+- [Features](#features)
+- [How To Contribute](#how-to-contribute)
+- [Contact](#contact)
 
-    * `id`: `INT PRIMARY KEY`
 
-    * `title`: `VARCHAR(30)` to hold role title
+## Built With
 
-    * `salary`: `DECIMAL` to hold role salary
+-Javascript
+-HTML
+-CSS
+-Node.js
+-SQL
+-Inquirer
 
-    * `department_id`: `INT` to hold reference to department role belongs to
 
-* `employee`
 
-    * `id`: `INT PRIMARY KEY`
+## Installation
 
-    * `first_name`: `VARCHAR(30)` to hold employee first name
+Clone the repo
+git clone https://github.com/jvanosdol/employee-tracker
 
-    * `last_name`: `VARCHAR(30)` to hold employee last name
 
-    * `role_id`: `INT` to hold reference to employee role
+## Screenshots
 
-    * `manager_id`: `INT` to hold reference to another employee that is the manager of the current employee (`null` if the employee has no manager)
 
-You might want to use a separate file that contains functions for performing specific SQL queries you'll need to use. A constructor function or class could be helpful for organizing these. You might also want to include a `seeds.sql` file to pre-populate your database, making the development of individual features much easier.
+- Note Taker Screenshot
+
+
+  ![screenshot](/public/assets/images/note-taker-home.png)
+  
+  ![screenshot](/public/assets/images/note-taker-menu.png)
+
+  ![screenshot](/public/assets/images/note-taker-item.png)
+
+
+## Credits
+
+- [Google](https://www.google.com)
+- [W3](https://www.w3schools.com)
+- [stackoverflow](https://stackoverflow.com/)
+
+## Features
+
+This app allows users to create custom notes, the user can create, delete, and update their notes. This app uses Express.js for the middleware. 
+
+
+## Deployed Page
+
+https://secret-brook-83276.herokuapp.com/
+
+## Github Repo
+
+https://github.com/jvanosdol/note-taker-challenge
+
+
+## How to Contribute
+
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b)
+3. Commit your Changes (git commit -m '')
+4. Push to the Branch (git push origin)
+5. Open a Pull Request
+
+
+## Contact
+
+Github username: jvanosdol
+
+email: j.vanosdol99@yahoo.com

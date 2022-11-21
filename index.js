@@ -1,41 +1,9 @@
-// view all departments
-// SELECT * FROM department
-
-// view all roles
-// SELECT * FROM role
-
-// View all employees
-// SELECT * FROM employees
-
-// create new department
-
-// prompt the user for the "name" of the department
-
-    // THEN run the query
-    // INSERT INTO department (name)
-    // VALUES ("Sales")
-
-        //THen ask the user what they want to do next, returns them back to the starting query
-
-
-// Create new role
-
-// Get the existing departments from the 'department' table
-
-    // THEN prompt the user for the 'title', 'salary', and 'department' for the role
-
-        // THEN Run the query
-
-            // INSERT INTO role (title, salary, department_id)
-            // VALUES ("Manager", 120000, 001)
-
-                // THen ask the user what they want to do next
 
 // ****************************************************************************************************
 const mysql = require('mysql2');
 const utils = require('util');
 const inquirer = require('inquirer');
-const { allowedNodeEnvironmentFlags } = require('process');
+//const { allowedNodeEnvironmentFlags } = require('process');
 
 // ****************************************************************************************************
 
@@ -98,27 +66,11 @@ const answers = await inquirer.prompt([
             addEmployee();
             break;
         
-        case 'Update an Employee Role':
-            updateEmployeeRole();
-            break;
+        // case 'Update an Employee Role':
+        //     updateEmployeeRole();
+        //     break;
     }
 };
-
-
-
-
-
-// await db.query(
-//     'INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?)',
-//     [answers.title, answers.content, answers.author_id]
-//     )
-
-//     console.log(answers)
-
-// }
-
-
-
 
 
 // DONE ****************************************************************************************************
@@ -258,8 +210,6 @@ addEmployee = async () => {
     
     ])
 
-
-    console.log(answers)
 
     console.log(answers)
 
