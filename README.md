@@ -10,12 +10,17 @@ This project demonstrates a basic understanding on SQL. This project focuses on 
 
 The user may view the current table of departments, the current table of roles, and the current table of employees. The user may also add onto any of the tables. 
 
+In order to use this program, the user must have Node.js installed, as well as the inquirer package, and mysql.
+
+The user must source the schema.sql file and then the seeds.sql file in order to access the database and then seed it with some initial data. 
+
+Once the database is seeded, the user may use the program and view the initial tables.
+
 ## Table of Contents
 
 - [Installation](#installation)
 - [Screenshots](#screenshots)
 - [Credits](#credits)
-- [Features](#features)
 - [How To Contribute](#how-to-contribute)
 - [Contact](#contact)
 
@@ -40,15 +45,12 @@ git clone https://github.com/jvanosdol/employee-tracker
 ## Screenshots
 
 
-- Note Taker Screenshot
+- Employee Tracker Screenshot
 
 
-  ![screenshot](/public/assets/images/note-taker-home.png)
+  ![screenshot](/assets/employee-tracker-start.png)
   
-  ![screenshot](/public/assets/images/note-taker-menu.png)
-
-  ![screenshot](/public/assets/images/note-taker-item.png)
-
+  ![screenshot](assets/employee-tracker-updated-table.png)
 
 ## Credits
 
@@ -56,18 +58,13 @@ git clone https://github.com/jvanosdol/employee-tracker
 - [W3](https://www.w3schools.com)
 - [stackoverflow](https://stackoverflow.com/)
 
-## Features
-
-This app allows users to create custom notes, the user can create, delete, and update their notes. This app uses Express.js for the middleware. 
 
 
-## Deployed Page
 
-https://secret-brook-83276.herokuapp.com/
 
 ## Github Repo
 
-https://github.com/jvanosdol/note-taker-challenge
+https://github.com/jvanosdol/employee-tracker
 
 
 ## How to Contribute
